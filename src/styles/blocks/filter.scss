@@ -1,0 +1,28 @@
+.fomt-filter__group {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.form-filter__label {
+  margin-right: 10px;
+
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.form-filter__input {
+  width: 420px;
+  height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 25px;
+  border: 1px solid #d8d8d8;
+
+  font-family: inherit;
+  outline: none;
+
+  &:focus {
+    background-color: #d8d8d8;
+  }
+}
