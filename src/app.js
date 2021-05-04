@@ -11,25 +11,6 @@ const toUpperFirstLetter = (word) => {
   return `${firstLetter}${restOfWord}`;
 };
 
-const generateLabel = ({ id, type }) => {
-  const mappingColor = {
-    IndependentLiving: '#006F79',
-    SupportAvailable: '#EC6608',
-  };
-  const mappingName = {
-    IndependentLiving: 'Independent living',
-    SupportAvailable: 'Restaurant & Support available',
-  }
-
-  return {
-    color: mappingColor[type], name: mappingName[type], type, itemId: id,
-  }
-}
-
-const generateLabels = (items) => {
-  return items.map((item) => generateLabel(item))
-};
-
 const updateData = (items) => items
   .map((item) => ({
     ...item,
@@ -42,9 +23,6 @@ export default () => {
     status: 'loading',
     data: [],
     networkError: null,
-    uiState: {
-      labels: [],
-    },
   };
 
   const container = document.querySelector('.projects__container-list');
@@ -53,9 +31,7 @@ export default () => {
   return getData('https://603e38c548171b0017b2ecf7.mockapi.io/homes')
     .then(({ data }) => {
       const newData = updateData(data);
-      const labels = generateLabels(data);
       watched.data = [...state.data, ...newData];
-      watched.uiState.labels = [...state.uiState.labels, ...labels];
       watched.status = 'finished';
       watched.networkError = null;
     })
