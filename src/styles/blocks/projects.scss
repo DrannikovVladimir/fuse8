@@ -19,3 +19,42 @@
   color: #45852D;
   text-align: center;
 }
+
+.projects__button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.projects__button {
+  position: relative;
+
+  display: inline-block;
+  padding-top: 12px;
+  padding-right: 53px;
+  padding-bottom: 12px;
+  padding-left: 33px;
+
+  border: 1px solid #d8d8d8;
+  border-radius: 25px;
+
+  line-height: 24px;
+  font-weight: 700;
+
+  background-color: transparent;
+
+  &::before {
+    content: url('../images/icon-arrow.svg');
+
+    position: absolute;
+    top: 16px;
+    right: 33px;
+  }
+
+  &:hover {
+    background-color: darken(#d8d8d8, 5%);
+  }
+
+  &:active {
+    background-color: darken(#d8d8d8, 20%);
+  }
+}
