@@ -1,0 +1,99 @@
+.list-projects {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1180px;
+  margin: 0;
+  margin-bottom: 22px;
+  padding: 0;
+
+  list-style: none;
+}
+
+.list-projects__item {
+  width: 377px;
+  margin-right: 22px;
+  margin-bottom: 38px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+.list-projects__item-image-container {
+  width: 377px;
+  height: 227px;
+
+  background-color: #c5c4c4;
+}
+
+.list-projects__item-content-container {
+  position: relative;
+
+  width: 377px;
+  padding-top: 15px;
+  padding-right: 20px;
+  padding-bottom: 17px;
+  padding-left: 20px;
+
+  background-color: #f8f8f8;
+}
+
+.list-projects__item-title {
+  margin: 0;
+  margin-bottom: 5px;
+
+  font-size: 20px;
+  line-height: 27px;
+  font-weight: 700;
+}
+
+.list-projects__item-address {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.list-projects__item-price-text {
+  margin: 0;
+  margin-bottom: 7px;
+}
+
+.list-projects__item-price {
+  font-weight: 700;
+}
+
+.list-projects__item-description {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 19px;
+}
+
+.list-projects__item-type {
+  position: absolute;
+
+  display: inline-block;
+  right: 0;
+  top: -29px;
+
+  margin: 0;
+  padding-top: 8px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 11px;
+
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: #ffffff;
+
+  background-color: #888888;
+}
+
+.list-projects__item-type--available {
+  background-color: #EC6608;
+}
+
+.list-projects__item-type--living {
+  background-color: #006F79;
+
+}
