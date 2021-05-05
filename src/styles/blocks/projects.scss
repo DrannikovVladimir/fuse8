@@ -5,6 +5,7 @@
 
 .projects__container {
   width: 1280px;
+  min-width: 320px;
   margin: 0 auto;
   padding-left: 50px;
   padding-right: 50px;
@@ -15,6 +16,7 @@
   margin-bottom: 45px;
 
   font-weight: 700;
+  font-size: 36px;
   line-height: 50px;
   color: #45852D;
   text-align: center;
@@ -28,7 +30,6 @@
 .projects__button {
   position: relative;
 
-  display: inline-block;
   padding-top: 12px;
   padding-right: 53px;
   padding-bottom: 12px;
@@ -56,5 +57,49 @@
 
   &:active {
     background-color: darken(#d8d8d8, 20%);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: darken(#d8d8d8, 50%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .projects__container {
+    width: auto;
+  }
+
+  .projects__container-list {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects__container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .projects__title {
+    margin-bottom: 40px;
+
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+@media (max-width: 440px) {
+  .projects__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .projects__title {
+    margin-bottom: 20px;
+
+    font-size: 20px;
+    line-height: 28px;
   }
 }

@@ -27,6 +27,32 @@
   outline: none;
 
   &:focus {
-    background-color: #d8d8d8;
+    border: 1px solid darken(#d8d8d8, 50%);
+  }
+}
+
+@media (max-width: 1280px) {
+  .form-filter__group {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 898px) {
+  .form-filter__input {
+    width: 327px;
+  }
+}
+
+@media (max-width: 440px) {
+  .form-filter {
+    margin-bottom: 20px;
+  }
+  .form-filter__input {
+    width: 100%;
+    height: 40px;
+  }
+
+  .form-filter__label {
+    font-size: 14px;
   }
 }

@@ -64,7 +64,7 @@
 .list-projects__item-description {
   margin: 0;
 
-  font-size: 17px;
+  font-size: 14px;
   line-height: 19px;
 }
 
@@ -95,5 +95,86 @@
 
 .list-projects__item-type--living {
   background-color: #006F79;
+}
 
+@media (max-width: 1280px) {
+  .list-projects {
+    width: 776px;
+    justify-content: center;
+  }
+
+  .list-projects__item {
+
+    &:nth-child(3n) {
+      margin-right: 22px;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 898px) {
+  .list-projects {
+    width: 377px;
+  }
+
+  .list-projects__item {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .list-projects {
+    width: auto;
+  }
+
+  .list-projects__item {
+    width: auto;
+  }
+
+  .list-projects__item-image-container {
+    width: auto;
+    height: auto;
+  }
+
+  .list-projects__item-image {
+    vertical-align: middle;
+  }
+
+  .list-projects__item-content-container {
+    width: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .list-projects__item-content-container {
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+  }
+
+  .list-projects__item-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .list-projects__item-address {
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .list-projects__item-price-text {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .list-projects__item-description {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
