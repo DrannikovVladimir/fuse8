@@ -8,6 +8,9 @@ export default (state, container) => {
       case 'data':
         renderList(value, container);
         break;
+      case 'filter.data':
+        renderList(value, container);
+        break;
       case 'networkError':
         // renderError(value, container);
         break;
