@@ -12,6 +12,10 @@ const createItem = ({ address, id, title, image, price, type }) => {
   const li = document.createElement('li');
   li.classList.add('list-projects__item');
 
+  const linkItem = document.createElement('a');
+  linkItem.classList.add('list-projects__link');
+  linkItem.href = `/details/${id}`;
+
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('list-projects__item-image-container');
 
@@ -52,12 +56,15 @@ const createItem = ({ address, id, title, image, price, type }) => {
 
   contentContainer.append(titleItem, addressItem, priceItemText, description, typeItem);
   imageContainer.appendChild(img);
-  li.append(imageContainer, contentContainer);
+  li.appendChild(linkItem);
+  linkItem.append(imageContainer, contentContainer);
 
   return li;
 }
 
-const renderList = (items, container, state) => {
+const renderList = (items, container) => {
+  container.innerHTML = '';
+
   if (items.length === 0) {
     return;
   }
