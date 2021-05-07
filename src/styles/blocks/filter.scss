@@ -26,8 +26,13 @@
   font-family: inherit;
   outline: none;
 
+  &:hover {
+    border-color: darken(#d8d8d8, 20%);
+  }
+
   &:focus {
-    border: 1px solid darken(#d8d8d8, 50%);
+    border-color: darken(#d8d8d8, 20%);
+    background-color: darken(#ffffff, 5%);
   }
 }
 
