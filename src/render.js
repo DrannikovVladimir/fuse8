@@ -80,11 +80,21 @@ const renderList = (items, container) => {
 };
 
 const renderError = (error, container) => {
-  return null;
+  container.innerHTML = '';
+
+  const feedback = document.createElement('div');
+  feedback.classList.add('projects__feedback');
+
+  const feedbackError = document.createElement('p');
+  feedbackError.classList.add('projects__feedback-error');
+  feedbackError.textContent = error;
+
+  const feedbackReference = document.createElement('p');
+  feedbackReference.classList.add('projects__feedback-reference');
+  feedbackReference.textContent = 'Попробуйте перезагрузить страницу';
+
+  feedback.append(feedbackError, feedbackReference);
+  container.append(feedback);
 };
 
-const renderLoading = (container) => {
-
-};
-
-export { renderList, renderError, renderLoading };
+export { renderList, renderError };

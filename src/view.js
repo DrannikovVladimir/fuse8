@@ -1,5 +1,5 @@
 import onChange from 'on-change';
-import { renderLoading, renderList, renderError } from './render.js';
+import { renderList, renderError } from './render.js';
 
 export default (state, container) => {
   const watchedState = onChange(state, (path, value) => {
@@ -11,8 +11,8 @@ export default (state, container) => {
       case 'filter.data':
         renderList(value, container);
         break;
-      case 'networkError':
-        // renderError(value, container);
+      case 'error':
+        renderError(value, container);
         break;
       default:
         break;
