@@ -18,18 +18,38 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(ico)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[ext]',
+        },
+      },
+      {
+        test: /\.(png|jpe?g|svg)$/i,
         loader: 'file-loader',
           options: {
             name: 'images/[name].[ext]',
           },
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        test: /\.(woff|woff2)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[ext]',
+        },
       },
     ],
   },
