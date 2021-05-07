@@ -3,7 +3,7 @@ import watchedState from './view';
 
 const URL = 'https://603e38c548171b0017b2ecf7.mockapi.io/homes';
 
-const getData = (url) => axios.get(url);
+const getData = (url) => axios.get(url, { timeout: 5000 })
 
 const getRandomNumber = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
 
@@ -27,7 +27,7 @@ export default () => {
   const state = {
     status: 'loading',
     data: [],
-    networkError: null,
+    error: null,
     filter: {
       value: '',
       data: [],
@@ -53,10 +53,11 @@ export default () => {
       const newData = updateData(data);
       watched.data = [...state.data, ...newData];
       watched.status = 'finished';
-      watched.networkError = null;
+      watched.error = null;
     })
     .catch((err) => {
-      watched.status = 'failed';
-      watched.networkError = err.message;
+      watched.networkError = 'Превышено время ожидания';
+      const error = new Error(err.message);
+      throw error;
     });
 };
