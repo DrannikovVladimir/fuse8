@@ -34,7 +34,7 @@ module.exports = {
         test: /\.(ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name].[ext]',
+          filename: 'images/[name][ext]',
         },
       },
       {
