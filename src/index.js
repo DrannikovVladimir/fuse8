@@ -1,6 +1,6 @@
 import './styles/style.scss';
 
-import favicon from './images/home.ico';
+import favicon from './favicon.ico';
 import one from './images/1.jpg';
 import two from './images/2.jpg';
 import three from './images/3.jpg';
