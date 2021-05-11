@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './styles/style.scss';
 
 import favicon from './favicon.ico';
@@ -9,7 +10,6 @@ import five from './images/5.jpg';
 import six from './images/6.jpg';
 import arrow from './images/icon-arrow.svg';
 
-
-import app from './app.js';
+import app from './app';
 
 app();

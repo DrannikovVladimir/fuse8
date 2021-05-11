@@ -42,9 +42,9 @@ module.exports = {
       {
         test: /\.(png|jpe?g|svg)$/i,
         loader: 'file-loader',
-          options: {
-            name: 'images/[name].[ext]',
-          },
+        options: {
+          name: 'images/[name].[ext]',
+        },
       },
       {
         test: /\.(woff|woff2)$/i,
@@ -68,4 +68,4 @@ module.exports = {
     open: true,
     hot: true,
   },
-}
+};

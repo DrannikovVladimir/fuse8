@@ -1,9 +1,9 @@
 import onChange from 'on-change';
-import { renderList, renderError } from './render.js';
+import { renderList, renderError } from './render';
 
 export default (state, container) => {
   const watchedState = onChange(state, (path, value) => {
-    switch(path) {
+    switch (path) {
       case 'data':
         renderList(value, container);
         break;

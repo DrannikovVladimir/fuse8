@@ -1,4 +1,6 @@
-const createItem = ({ address, id, title, image, price, type }) => {
+const createItem = ({
+  address, id, title, image, price, type,
+}) => {
   const mappingClass = {
     IndependentLiving: 'living',
     SupportAvailable: 'available',
@@ -51,7 +53,7 @@ const createItem = ({ address, id, title, image, price, type }) => {
   description.textContent = 'Shared Ownership Available';
 
   const typeItem = document.createElement('p');
-  typeItem.classList.add(`list-projects__item-type`, `list-projects__item-type--${mappingClass[type]}`);
+  typeItem.classList.add('list-projects__item-type', `list-projects__item-type--${mappingClass[type]}`);
   typeItem.textContent = mappingName[type];
 
   contentContainer.append(titleItem, addressItem, priceItemText, description, typeItem);
@@ -60,7 +62,7 @@ const createItem = ({ address, id, title, image, price, type }) => {
   linkItem.append(imageContainer, contentContainer);
 
   return li;
-}
+};
 
 const renderList = (items, container) => {
   container.innerHTML = '';
@@ -71,7 +73,7 @@ const renderList = (items, container) => {
 
   const ul = document.createElement('ul');
   ul.classList.add('list-projects');
-  items.map((item) => {
+  items.forEach((item) => {
     const card = createItem(item);
     ul.appendChild(card);
   });

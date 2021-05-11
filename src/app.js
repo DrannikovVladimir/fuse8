@@ -3,7 +3,7 @@ import watchedState from './view';
 
 const URL = 'https://603e38c548171b0017b2ecf7.mockapi.io/homes';
 
-const getData = (url) => axios.get(url, { timeout: 5000 })
+const getData = (url) => axios.get(url, { timeout: 5000 });
 
 const getRandomNumber = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
 
