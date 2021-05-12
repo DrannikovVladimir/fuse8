@@ -1,3 +1,21 @@
+const createPicture = (image, title) => {
+  const picture = document.createElement('picture');
+  const source = document.createElement('source');
+  source.type = 'image/webp';
+  source.srcset = image.webp;
+
+  const img = document.createElement('img');
+  img.src = image.jpg;
+  img.alt = title;
+  img.width = 377;
+  img.height = 227;
+  img.classList.add('list-projects__item-image');
+
+  picture.append(source, img);
+
+  return picture;
+};
+
 const createItem = ({
   address, id, title, image, price, type,
 }) => {
@@ -21,12 +39,7 @@ const createItem = ({
   const imageContainer = document.createElement('div');
   imageContainer.classList.add('list-projects__item-image-container');
 
-  const img = document.createElement('img');
-  img.src = image;
-  img.alt = title;
-  img.width = 377;
-  img.height = 227;
-  img.classList.add('list-projects__item-image');
+  const picture = createPicture(image, title);
 
   const contentContainer = document.createElement('div');
   contentContainer.classList.add('list-projects__item-content-container');
@@ -57,7 +70,7 @@ const createItem = ({
   typeItem.textContent = mappingName[type];
 
   contentContainer.append(titleItem, addressItem, priceItemText, description, typeItem);
-  imageContainer.appendChild(img);
+  imageContainer.appendChild(picture);
   li.appendChild(linkItem);
   linkItem.append(imageContainer, contentContainer);
 
