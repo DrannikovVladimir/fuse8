@@ -5,8 +5,6 @@ const URL = 'https://603e38c548171b0017b2ecf7.mockapi.io/homes';
 
 const getData = (url) => axios.get(url, { timeout: 5000 });
 
-const getRandomNumber = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min);
-
 const toUpperFirstLetter = (word) => {
   const firstLetter = word[0].toUpperCase();
   const restOfWord = word.slice(1);
@@ -14,9 +12,12 @@ const toUpperFirstLetter = (word) => {
 };
 
 const updateData = (items) => items
-  .map((item) => ({
+  .map((item, index) => ({
     ...item,
-    image: `./images/${getRandomNumber(1, 6)}.jpg`,
+    image: {
+      jpg: `./images/${index + 1}.jpg`,
+      webp: `./images/${index + 1}.webp`,
+    },
     title: toUpperFirstLetter(item.title),
   }));
 
