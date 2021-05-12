@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -14,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
@@ -59,6 +60,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
+    }),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [
+          ['jpegtran', { progressive: true }],
+        ],
+      },
+    }),
+    new ImageMinimizerPlugin({
+      test: /\.(jpe?g)$/i,
+      filename: 'images/[name].webp',
+      minimizerOptions: {
+        plugins: ['imagemin-webp'],
+      },
     }),
   ],
   devServer: {
