@@ -78,6 +78,7 @@ const createItem = ({
 };
 
 const renderList = (items, container) => {
+  console.log(items);
   container.innerHTML = '';
 
   if (items.length === 0) {

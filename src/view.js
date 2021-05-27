@@ -3,6 +3,7 @@ import { renderList, renderError } from './render';
 
 export default (state, container) => {
   const watchedState = onChange(state, (path, value) => {
+    console.log(value);
     switch (path) {
       case 'data':
         renderList(value, container);
