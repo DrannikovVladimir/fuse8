@@ -36,32 +36,37 @@ export default () => {
     },
   };
 
-  const filter = document.querySelector('.form-filter__input');
-  const button = document.querySelector('.projects__button');
-  const container = document.querySelector('.projects__container-list');
-  const watched = watchedState(state, container);
+  const elements = {
+    filter: document.querySelector('.form-filter__input'),
+    button: document.querySelector('.projects__button'),
+    container: document.querySelector('.projects__container-list'),
+  };
+
+  const watched = watchedState(state, elements);
 
   const getItems = (page) => {
     const data = axios.get(`https://interview-test-task-api.herokuapp.com/pages?page=${page}`)
-      .then(({ data }) => {
-        console.log(data.items);
-        watched.page = data.nextPage;
-        return updateData(data.items); //Ошибка была в это строчке, забыл вернуть данные из промиса, добавил return
+      .then((response) => {
+        if (response === null) {
+          watched.page = null;
+        }
+        const { data: { nextPage, items }} = response;
+        watched.page = nextPage;
+        const newData = updateData(items);
+        watched.data = [...state.data, ...newData];
       })
-      .then((coll) => {
-        console.log(coll);
-        watched.data = [...state.data, ...coll];
+      .catch((err) => {
+        watched.error = err.message;
       });
 
     return data;
   };
 
-  button.addEventListener('click', () => {    
-    console.log(state.page);
+  elements.button.addEventListener('click', () => {
     getItems(state.page);    
   });
 
-  filter.addEventListener('input', (evt) => {
+  elements.filter.addEventListener('input', (evt) => {
     if (evt.target.value.length <= 3) {
       watched.filter.data = state.data;
       return;

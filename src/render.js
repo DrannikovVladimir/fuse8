@@ -78,7 +78,6 @@ const createItem = ({
 };
 
 const renderList = (items, container) => {
-  console.log(items);
   container.innerHTML = '';
 
   if (items.length === 0) {
@@ -113,4 +112,11 @@ const renderError = (error, container) => {
   container.append(feedback);
 };
 
-export { renderList, renderError };
+const removeButton = (value, button) => {
+  if (value) {
+    return;
+  }
+  button.remove();
+};
+
+export { renderList, renderError, removeButton };
