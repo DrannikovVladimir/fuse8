@@ -1,9 +1,7 @@
 import axios from 'axios';
 import watchedState from './view';
 
-const URL = `https://interview-test-task-api.herokuapp.com/pages?page=1`;
-
-const getData = (url) => axios.get(url, { timeout: 5000 });
+const URL = 'https://interview-test-task-api.herokuapp.com/pages?page=';
 
 const toUpperFirstLetter = (word) => {
   const firstLetter = word[0].toUpperCase();
@@ -12,11 +10,11 @@ const toUpperFirstLetter = (word) => {
 };
 
 const updateData = (items) => items
-  .map((item, index) => ({
+  .map((item) => ({
     ...item,
     image: {
-      jpg: `./images/${index + 1}.jpg`,
-      webp: `./images/${index + 1}.webp`,
+      jpg: `./images/${item.id}.jpg`,
+      webp: `./images/${item.id}.webp`,
     },
     title: toUpperFirstLetter(item.title),
   }));
@@ -44,26 +42,24 @@ export default () => {
 
   const watched = watchedState(state, elements);
 
-  const getItems = (page) => {
-    const data = axios.get(`https://interview-test-task-api.herokuapp.com/pages?page=${page}`)
-      .then((response) => {
-        if (response === null) {
-          watched.page = null;
-        }
-        const { data: { nextPage, items }} = response;
-        watched.page = nextPage;
-        const newData = updateData(items);
-        watched.data = [...state.data, ...newData];
-      })
-      .catch((err) => {
-        watched.error = err.message;
-      });
-
-    return data;
-  };
+  const getData = (url) => axios.get(url, { timeout: 5000 })
+    .then(({ data }) => {
+      const { nextPage, items } = data;
+      const newData = updateData(items);
+      watched.data = [...state.data, ...newData];
+      watched.page = nextPage;
+      watched.status = 'finished';
+      watched.error = null;
+    })
+    .catch((err) => {
+      watched.error = 'Превышено время ожидания';
+      const error = new Error(err.message);
+      throw error;
+    });
 
   elements.button.addEventListener('click', () => {
-    getItems(state.page);    
+    state.status = 'loading';
+    getData(`${URL}${state.page}`);
   });
 
   elements.filter.addEventListener('input', (evt) => {
@@ -76,17 +72,5 @@ export default () => {
     watched.filter.data = filteredData;
   });
 
-  return getData(URL)
-    .then(({ data }) => {
-      const { items } = data;
-      const newData = updateData(items);
-      watched.data = [...state.data, ...newData];
-      watched.status = 'finished';
-      watched.error = null;
-    })
-    .catch((err) => {
-      watched.networkError = 'Превышено время ожидания';
-      const error = new Error(err.message);
-      throw error;
-    });
+  return getData(`${URL}${state.page}`);
 };
